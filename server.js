@@ -88,13 +88,20 @@ app.get("/sse", async (req, res) => {
 
 app.post("/messages", async (req, res) => {
   const sessionId = req.query.sessionId;
-  const transport = transports[sessionId];
 
-  if (!transport) {
-    res.status(400).send("No transport found for sessionId");
+  if (!sessionId || !transports[sessionId]) {
+    res.status(200).json({
+      jsonrpc: "2.0",
+      error: {
+        code: -32000,
+        message: "Session not established"
+      },
+      id: null
+    });
     return;
   }
 
+  const transport = transports[sessionId];
   await transport.handlePostMessage(req, res, req.body);
 });
 
