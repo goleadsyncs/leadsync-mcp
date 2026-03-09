@@ -1,0 +1,19 @@
+{
+  "name": "leadsync-mcp",
+  "version": "1.0.0",
+  "description": "LeadSync MCP server",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "zod": "^3.23.8"
+  }
+}
